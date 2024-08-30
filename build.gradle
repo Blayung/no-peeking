@@ -30,7 +30,7 @@ modrinth {
     changelog = rootProject.file("MODRINTH_CHANGELOG.md").text
     versionName = "No Peeking " + modVersion
     versionNumber = modVersion
-    gameVersions = ["1.20.1"]
+    gameVersions = ["1.20", "1.20.1", "1.20.2"]
     loaders = ["fabric", "quilt"]
 }
 
