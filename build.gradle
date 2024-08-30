@@ -26,7 +26,7 @@ modrinth {
     token = System.getenv("MINOTAUR_PAT")
     syncBodyFrom = rootProject.file("MODRINTH_README.md").text
     uploadFile = remapJar
-    projectId = "no-peeking"
+    projectId = "no_peeking"
     changelog = rootProject.file("MODRINTH_CHANGELOG.md").text
     versionName = "No Peeking " + modVersion
     versionNumber = modVersion
