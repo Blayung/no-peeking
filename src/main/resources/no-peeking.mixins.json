@@ -1,0 +1,11 @@
+{
+    "required": true,
+    "injectors": {
+        "defaultRequire": 1
+    },
+    "compatibilityLevel": "JAVA_17",
+    "package": "me.teamaster.nopeeking",
+    "client": [
+        "TextFieldWidgetMixin"
+    ]
+}

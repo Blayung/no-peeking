@@ -1,0 +1,40 @@
+plugins {
+	id "fabric-loom" version "1.7-SNAPSHOT"
+    id "com.modrinth.minotaur" version "2.+"
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:1.20.1"
+	mappings "net.fabricmc:yarn:1.20.1+build.10:v2"
+	modImplementation "net.fabricmc:fabric-loader:0.15.11"
+}
+
+def modVersion = "1.0.0"
+
+base.archivesName = "no-peeking-" + modVersion
+
+def javaVersion = JavaVersion.VERSION_17
+
+java {
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+}
+
+jar.from("LICENSE.txt")
+
+modrinth {
+    token = System.getenv("MINOTAUR_PAT")
+    syncBodyFrom = rootProject.file("MODRINTH_README.md").text
+    uploadFile = remapJar
+    projectId = "no-peeking"
+    changelog = rootProject.file("MODRINTH_CHANGELOG.md").text
+    versionName = "No Peeking " + modVersion
+    versionNumber = modVersion
+    gameVersions = ["1.20.1"]
+    loaders = ["fabric", "quilt"]
+}
+
+task modrinthUpload {
+    dependsOn "modrinth"
+    dependsOn "modrinthSyncBody"
+}

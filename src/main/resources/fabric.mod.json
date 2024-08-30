@@ -1,0 +1,34 @@
+{
+    "schemaVersion": 1,
+
+    "id": "no-peeking",
+    "version": "${modVersion}",
+
+    "name": "No Peeking!",
+    "description": "This mod hides your password as you type when you're using login commands.",
+    "icon": "assets/no-peeking/icon.png",
+
+    "license": "GPL-3.0-only",
+    "authors": [
+        "Wojciech Paruch <teamaster69@proton.me>"
+    ],
+
+    "contact": {
+        "homepage": "https://modrinth.com/mod/no-peeking",
+        "sources": "https://github.com/Blayung/no-peeking",
+        "issues": "https://github.com/Blayung/no-peeking/issues",
+        "email": "teamaster69@proton.me"
+    },
+    "custom": {
+        "modmenu": {
+            "links": {
+                "modmenu.modrinth": "https://modrinth.com/mod/no-peeking"
+            }
+        }
+    },
+
+    "environment": "client",
+    "mixins": [
+        "no-peeking.mixins.json"
+    ]
+}
