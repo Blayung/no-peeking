@@ -9,7 +9,7 @@ import org.objectweb.asm.Opcodes;
 
 @Mixin(TextFieldWidget.class)
 public class TextFieldWidgetMixin {
-    @Redirect(method = "renderButton(Lnet/minecraft/client/gui/DrawContext;IIF)V", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/gui/widget/TextFieldWidget;text:Ljava/lang/String;"))
+    @Redirect(method = "renderButton", at = @At(value = "FIELD", opcode = Opcodes.GETFIELD, target = "Lnet/minecraft/client/gui/widget/TextFieldWidget;text:Ljava/lang/String;"))
     private String passwordObfuscationProxy(TextFieldWidget textFieldWidget) {
         String text = textFieldWidget.getText();
 

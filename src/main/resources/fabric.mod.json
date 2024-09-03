@@ -2,7 +2,7 @@
     "schemaVersion": 1,
 
     "id": "no-peeking",
-    "version": "${modVersion}",
+    "version": "${version}",
 
     "name": "No Peeking!",
     "description": "This mod hides your password as you type when using login commands.",

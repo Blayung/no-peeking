@@ -1,1 +1,2 @@
-The first version of the mod.
+- Fixed mod version appearing as `${modVersion}`
+- Extended version support up to 1.21.1
