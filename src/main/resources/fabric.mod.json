@@ -10,7 +10,16 @@
 
     "license": "GPL-3.0-only",
     "authors": [
-        "Wojciech Paruch <teamaster69@proton.me>"
+       "Wojciech Paruch"
+    ],
+
+    "contributors": [
+        {
+            "name": "joshieman06",
+            "contact": {
+                "homepage": "https://github.com/joshieman06"
+            }
+        }
     ],
 
     "contact": {
