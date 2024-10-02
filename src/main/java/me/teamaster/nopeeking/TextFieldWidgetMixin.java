@@ -1,5 +1,7 @@
 package me.teamaster.nopeeking;
 
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.gui.screen.ChatScreen;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -13,21 +15,24 @@ public class TextFieldWidgetMixin {
     private String passwordObfuscationProxy(TextFieldWidget textFieldWidget) {
         String text = textFieldWidget.getText();
 
-        if (text.startsWith("/l ") || text.startsWith("/login ") || text.startsWith("/register ")) {
-            StringBuilder obfuscatedText = new StringBuilder();
-            boolean firstPart = true;
-            for (String part : text.split(" ")) {
-                if (firstPart) {
-                    obfuscatedText.append(part);
-                    firstPart = false;
-                } else {
-                    obfuscatedText.append("*".repeat(part.length()));
+        if (MinecraftClient.getInstance().currentScreen instanceof ChatScreen) {
+            boolean isCommand = (text.startsWith("/login ") || text.startsWith("/register ") || text.startsWith("/l ")) && text.split(" ").length > 1;
+            if (isCommand) {
+                StringBuilder obfuscatedText = new StringBuilder();
+                boolean firstPart = true;
+                for (String part : text.split(" ")) {
+                    if (firstPart) {
+                        obfuscatedText.append(part);
+                        firstPart = false;
+                    } else {
+                        obfuscatedText.append("*".repeat(part.length()));
+                    }
+                    obfuscatedText.append(' ');
                 }
-                obfuscatedText.append(' ');
+                return obfuscatedText.toString().trim();
             }
-            return obfuscatedText.toString();
         }
 
-        return text;
+        return textFieldWidget.getText();
     }
 }
