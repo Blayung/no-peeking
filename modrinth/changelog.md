@@ -1,0 +1,1 @@
+- Fixed that the mod would obfuscate text in text fields other than the chat ([#1](https://github.com/Blayung/no-peeking/issues/1), [#3](https://github.com/Blayung/no-peeking/pull/3)), thanks to [joshieman06](https://github.com/joshieman06)!
