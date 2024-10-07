@@ -1,0 +1,4 @@
+{
+    "text.autoconfig.no-peeking.title": "No Peeking Config",
+    "text.autoconfig.no-peeking.option.commandsToObfuscate": "List of commands to be obfuscated"
+}
