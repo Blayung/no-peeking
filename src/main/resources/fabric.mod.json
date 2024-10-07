@@ -19,6 +19,12 @@
             "contact": {
                 "homepage": "https://github.com/joshieman06"
             }
+        },
+        {
+            "name": "themg95",
+            "contact": {
+                "homepage": "https://github.com/themg95"
+            }
         }
     ],
 
@@ -28,25 +34,24 @@
         "issues": "https://github.com/Blayung/no-peeking/issues",
         "email": "teamaster69@proton.me"
     },
-    "custom": {
-        "modmenu": {
-            "links": {
-                "modmenu.modrinth": "https://modrinth.com/mod/no_peeking"
-            }
-        }
-    },
 
     "environment": "client",
-    "mixins": [
-        "no-peeking.mixins.json"
-    ],
-
     "entrypoints": {
-        "main": [
+        "client": [
             "me.teamaster.nopeeking.NoPeeking"
         ],
         "modmenu": [
             "me.teamaster.nopeeking.ModMenuIntegration"
         ]
+    },
+    "mixins": [
+        "no-peeking.mixins.json"
+    ],
+
+    "suggests": {
+        "modmenu": "*"
+    },
+    "depends": {
+        "cloth-config": "*"
     }
 }

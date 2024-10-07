@@ -1,2 +1,2 @@
 ## No Peeking!
-**This mod hides your password as you type when using login commands.**
+**This mod hides your password as you type when using login commands (customizable!)**
