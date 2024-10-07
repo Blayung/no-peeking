@@ -1,12 +1,21 @@
 plugins {
-	id "fabric-loom" version "1.7-SNAPSHOT"
+    id "fabric-loom" version "1.7-SNAPSHOT"
     id "com.modrinth.minotaur" version "2.+"
 }
 
+repositories {
+    maven { url "https://maven.shedaniel.me/" }
+    maven { url "https://maven.terraformersmc.com/releases/" }
+}
+
 dependencies {
-	minecraft "com.mojang:minecraft:1.20.1"
-	mappings "net.fabricmc:yarn:1.20.1+build.10:v2"
-	modImplementation "net.fabricmc:fabric-loader:0.16.5"
+    minecraft "com.mojang:minecraft:1.20.1"
+    mappings "net.fabricmc:yarn:1.20.1+build.10:v2"
+    modImplementation "net.fabricmc:fabric-loader:0.16.5"
+    modApi("me.shedaniel.cloth:cloth-config-fabric:11.1.136") {
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+    modApi "com.terraformersmc:modmenu:7.2.2"
 }
 
 def modVersion = "1.0.2"
@@ -23,9 +32,9 @@ java {
 jar.from("LICENSE.txt")
 
 processResources {
-	filesMatching("fabric.mod.json") {
-		expand "version": modVersion
-	}
+    filesMatching("fabric.mod.json") {
+        expand "version": modVersion
+    }
 }
 
 modrinth {

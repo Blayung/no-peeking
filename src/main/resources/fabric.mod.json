@@ -39,5 +39,14 @@
     "environment": "client",
     "mixins": [
         "no-peeking.mixins.json"
-    ]
+    ],
+
+    "entrypoints": {
+        "main": [
+            "me.teamaster.nopeeking.NoPeeking"
+        ],
+        "modmenu": [
+            "me.teamaster.nopeeking.ModMenuIntegration"
+        ]
+    }
 }
