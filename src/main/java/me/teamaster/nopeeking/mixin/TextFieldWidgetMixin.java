@@ -17,18 +17,16 @@ public class TextFieldWidgetMixin {
     private String passwordObfuscationProxy(TextFieldWidget textFieldWidget) {
         String text = textFieldWidget.getText();
         if (MinecraftClient.getInstance().currentScreen instanceof ChatScreen) {
-            String[] splitText = text.split(" ");
+            String[] splitText = text.split(" ", -1);
             if (splitText.length > 1 && splitText[0].charAt(0) == '/' && (NoPeeking.config.commandsToObfuscate.contains(splitText[0]) || NoPeeking.config.commandsToObfuscate.contains(splitText[0].substring(1)))) {
-                StringBuilder obfuscatedText = new StringBuilder();
-                boolean firstPart = true;
+                StringBuilder obfuscatedText = new StringBuilder(splitText[0]);
+                boolean isFirst = true;
                 for (String part : splitText) {
-                    if (firstPart) {
-                        obfuscatedText.append(part);
-                        firstPart = false;
-                    } else {
-                        obfuscatedText.append("*".repeat(part.length()));
+                    if (isFirst) {
+                        isFirst = false;
+                        continue;
                     }
-                    obfuscatedText.append(' ');
+                    obfuscatedText.append(' ').append("*".repeat(part.length()));
                 }
                 return obfuscatedText.toString();
             }

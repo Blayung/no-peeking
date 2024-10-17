@@ -1,1 +1,2 @@
-- Added an option to customize commands to be obfuscated ([#2](https://github.com/Blayung/no-peeking/issues/2), [#5](https://github.com/Blayung/no-peeking/pull/5)), thanks to [themg95](https://github.com/themg95)!
+- Fixed weird behaviour when multiple spaces are at the end of a command ([#4](https://github.com/Blayung/no-peeking/issues/4))
+- Fixed the vertical cursor appearing when typing in login commands.
