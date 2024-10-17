@@ -1,2 +1,2 @@
-- Fixed weird behaviour when multiple spaces are at the end of a command ([#4](https://github.com/Blayung/no-peeking/issues/4))
-- Fixed the vertical cursor appearing when typing in login commands.
+- Fixed weird behaviour when multiple spaces are placed at the end of a login command ([#4](https://github.com/Blayung/no-peeking/issues/4)).
+- Fixed the vertical cursor appearing instead of the horizontal one when typing in login commands.
