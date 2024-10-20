@@ -21,7 +21,7 @@ dependencies {
     }
 }
 
-def modVersion = "1.1.1"
+def modVersion = "1.1.2"
 
 base.archivesName = "no-peeking-" + modVersion
 

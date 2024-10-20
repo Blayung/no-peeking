@@ -1,2 +1,2 @@
-- Fixed weird behaviour when multiple spaces are placed at the end of a login command ([#4](https://github.com/Blayung/no-peeking/issues/4)).
-- Fixed the vertical cursor appearing instead of the horizontal one when typing in login commands.
+- Fixed having a space in the beggining of the chat input crashing the game.
+- Optimized the text obfuscation.
