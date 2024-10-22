@@ -1,2 +1,1 @@
-- Fixed having a space in the beggining of the chat input crashing the game.
-- Optimized the text obfuscation.
+- Updated the modrinth link in the metadata.
