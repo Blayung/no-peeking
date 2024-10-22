@@ -21,7 +21,7 @@ dependencies {
     }
 }
 
-def modVersion = "1.1.2"
+def modVersion = "1.1.3"
 
 base.archivesName = "no-peeking-" + modVersion
 
@@ -44,12 +44,12 @@ modrinth {
     token = System.getenv("MINOTAUR_PAT")
     syncBodyFrom = rootProject.file("modrinth/readme.md").text
     uploadFile = remapJar
-    projectId = "no_peeking"
+    projectId = "nopeeking"
     changelog = rootProject.file("modrinth/changelog.md").text
     versionName = "No Peeking " + modVersion
     versionNumber = modVersion
     gameVersions = ["1.20", "1.20.1", "1.20.2", "1.20.3", "1.20.4", "1.20.5", "1.20.6", "1.21", "1.21.1"]
-    loaders = ["fabric", "quilt"]
+    loaders = ["fabric"]
     dependencies {
         required.project "cloth-config"
         optional.project "modmenu"
