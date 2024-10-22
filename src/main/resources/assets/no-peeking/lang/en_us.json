@@ -1,4 +1,6 @@
 {
     "text.autoconfig.no-peeking.title": "No Peeking Config",
-    "text.autoconfig.no-peeking.option.commandsToObfuscate": "List of commands to be obfuscated"
+    "text.autoconfig.no-peeking.option.commandsToObfuscate": "List of commands to be obfuscated",
+    "text.autoconfig.no-peeking.option.obfuscationString": "Obfuscation character or String",
+    "text.autoconfig.no-peeking.option.shouldObfuscateLetterByLetter": "Obfuscates letter by letter"
 }

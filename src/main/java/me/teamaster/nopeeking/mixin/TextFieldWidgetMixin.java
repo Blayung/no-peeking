@@ -23,9 +23,14 @@ public class TextFieldWidgetMixin {
             if (splitText.length > 1 && splitText[0].length() > 0 && splitText[0].charAt(0) == '/' && (NoPeeking.config.commandsToObfuscate.contains(splitText[0]) || NoPeeking.config.commandsToObfuscate.contains(splitText[0].substring(1)))) {
                 StringBuilder obfuscatedText = new StringBuilder(splitText[0]);
                 for (String part : Arrays.copyOfRange(splitText, 1, splitText.length)) {
-                    obfuscatedText.append(' ').append("*".repeat(part.length()));
-                }
+                    if (NoPeeking.config.shouldObfuscateLetterByLetter == false || part.length() == 0 || NoPeeking.config.obfuscationString.length() == 0 || NoPeeking.config.obfuscationString.length() == 1) {
+                        obfuscatedText.append(' ').append(NoPeeking.config.obfuscationString.repeat(part.length()));                        
+                    } else {
+                        String stringForObfuscation = NoPeeking.config.obfuscationString.repeat(part.length() / NoPeeking.config.obfuscationString.length() + 2); //two for buffering
+                        obfuscatedText.append(' ').append(stringForObfuscation.substring(0, part.length()));
+                    }
                 return obfuscatedText.toString();
+                }
             }
         }
         return text;

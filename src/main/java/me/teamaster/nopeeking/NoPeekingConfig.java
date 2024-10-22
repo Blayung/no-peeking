@@ -9,4 +9,6 @@ import java.util.Arrays;
 @Config(name = "no-peeking")
 public class NoPeekingConfig implements ConfigData {
     public List<String> commandsToObfuscate = Arrays.asList("/l", "/login", "/register");
+    public String obfuscationString = "*";
+    public Boolean shouldObfuscateLetterByLetter = true;
 }
