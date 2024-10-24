@@ -22,8 +22,9 @@ public class TextFieldWidgetMixin {
             String[] splitText = text.split(" ", -1);
             if (splitText.length > 1 && splitText[0].length() > 0 && splitText[0].charAt(0) == '/' && (NoPeeking.config.commandsToObfuscate.contains(splitText[0]) || NoPeeking.config.commandsToObfuscate.contains(splitText[0].substring(1)))) {
                 StringBuilder obfuscatedText = new StringBuilder(splitText[0]);
+                String obfuscationChar = NoPeeking.config.obfuscationChar.isEmpty() ? "*" : NoPeeking.config.obfuscationChar.substring(0, 1);
                 for (String part : Arrays.copyOfRange(splitText, 1, splitText.length)) {
-                    obfuscatedText.append(' ').append("*".repeat(part.length()));
+                    obfuscatedText.append(' ').append(obfuscationChar.repeat(part.length()));
                 }
                 return obfuscatedText.toString();
             }

@@ -1,1 +1,1 @@
-- Updated the modrinth link in the metadata.
+- Added an option to customize the character used in text obfuscation.
