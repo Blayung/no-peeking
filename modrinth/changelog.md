@@ -1,1 +1,1 @@
-- Added an option to customize the character used in text obfuscation.
+- Updated to 1.21.5
