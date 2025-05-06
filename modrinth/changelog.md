@@ -1,1 +1,1 @@
-- Updated to 1.21.5
+- Fixed obfuscation not working when there are spaces before the slash ([#7](https://github.com/Blayung/no-peeking/issues/7))

@@ -11,17 +11,17 @@ repositories {
 dependencies {
     minecraft "com.mojang:minecraft:1.21.5"
     mappings "net.fabricmc:yarn:1.21.5+build.1:v2"
-    modImplementation "net.fabricmc:fabric-loader:0.16.10"
+    modImplementation "net.fabricmc:fabric-loader:0.16.14"
 
-    modApi "com.terraformersmc:modmenu:14.0.0-rc.1"
-    modLocalRuntime "net.fabricmc.fabric-api:fabric-api:0.119.5+1.21.5"
+    modApi "com.terraformersmc:modmenu:14.0.0-rc.2"
+    modLocalRuntime "net.fabricmc.fabric-api:fabric-api:0.123.0+1.21.5"
 
     modApi("me.shedaniel.cloth:cloth-config-fabric:18.0.145") {
         exclude(group: "net.fabricmc.fabric-api")
     }
 }
 
-def modVersion = "1.2.1"
+def modVersion = "1.2.2"
 
 base.archivesName = "no-peeking-" + modVersion
 

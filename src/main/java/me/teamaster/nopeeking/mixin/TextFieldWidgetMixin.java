@@ -20,13 +20,30 @@ public class TextFieldWidgetMixin {
         String text = textFieldWidget.getText();
         if (MinecraftClient.getInstance().currentScreen instanceof ChatScreen) {
             String[] splitText = text.split(" ", -1);
-            if (splitText.length > 1 && splitText[0].length() > 0 && splitText[0].charAt(0) == '/' && (NoPeeking.config.commandsToObfuscate.contains(splitText[0]) || NoPeeking.config.commandsToObfuscate.contains(splitText[0].substring(1)))) {
-                StringBuilder obfuscatedText = new StringBuilder(splitText[0]);
-                String obfuscationChar = NoPeeking.config.obfuscationChar.isEmpty() ? "*" : NoPeeking.config.obfuscationChar.substring(0, 1);
-                for (String part : Arrays.copyOfRange(splitText, 1, splitText.length)) {
-                    obfuscatedText.append(' ').append(obfuscationChar.repeat(part.length()));
+            if (splitText.length > 1) {
+                int firstWordIndex = 0;
+                try {
+                    while (splitText[firstWordIndex].isEmpty()) {
+                        firstWordIndex++;
+                    }
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    firstWordIndex = -1;
                 }
-                return obfuscatedText.toString();
+                if (firstWordIndex != -1 && splitText[firstWordIndex].charAt(0) == '/' && (NoPeeking.config.commandsToObfuscate.contains(splitText[firstWordIndex]) || NoPeeking.config.commandsToObfuscate.contains(splitText[firstWordIndex].substring(1)))) {
+                    StringBuilder obfuscatedText = new StringBuilder();
+                    for (int i = 0; i < firstWordIndex; i++) {
+                        obfuscatedText.append(' ');
+                    }
+                    obfuscatedText.append(splitText[firstWordIndex]);
+                    char obfuscationChar = NoPeeking.config.obfuscationChar.isEmpty() ? '*' : NoPeeking.config.obfuscationChar.charAt(0);
+                    for (String part : Arrays.copyOfRange(splitText, firstWordIndex + 1, splitText.length)) {
+                        obfuscatedText.append(' ');
+                        for (int i = 0; i < part.length(); i++) {
+                            obfuscatedText.append(obfuscationChar);
+                        }
+                    }
+                    return obfuscatedText.toString();
+                }
             }
         }
         return text;
