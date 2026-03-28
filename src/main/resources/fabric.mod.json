@@ -5,7 +5,7 @@
     "version": "${version}",
 
     "name": "No Peeking!",
-    "description": "This mod hides your password as you type when using login commands.",
+    "description": "This mod hides your password as you type login commands.",
     "icon": "assets/no-peeking/icon.png",
 
     "license": "GPL-3.0-only",
