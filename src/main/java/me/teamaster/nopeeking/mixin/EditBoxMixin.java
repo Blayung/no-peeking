@@ -19,7 +19,7 @@ public class EditBoxMixin {
     private String passwordObfuscationProxy(EditBox editBox) {
         String text = editBox.getValue();
 
-        if (Minecraft.getInstance().screen instanceof ChatScreen) {
+        if (Minecraft.getInstance().gui.screen() instanceof ChatScreen) {
             String[] splitText = text.split(" ", -1);
 
             if (splitText.length > 1) {
