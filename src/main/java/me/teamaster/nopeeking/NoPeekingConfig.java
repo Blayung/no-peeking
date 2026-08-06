@@ -12,4 +12,9 @@ public class NoPeekingConfig implements ConfigData {
     public ArrayList<String> commandsToObfuscate = new ArrayList<>(Arrays.asList("/l", "/login", "/register"));
     @ConfigEntry.Gui.Tooltip
     public String obfuscationChar = "*";
+    @ConfigEntry.Gui.Tooltip
+    public ArrayList<String> dialogTitleKeywordsToObfuscate = new ArrayList<>(Arrays.asList(
+            "login", "log in", "register", "sign in", "sign up", "password", "forgot password",
+            "anmelden", "einloggen", "registrieren", "passwort", "passwort vergessen"
+    ));
 }
