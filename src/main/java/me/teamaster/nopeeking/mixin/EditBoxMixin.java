@@ -22,50 +22,15 @@ public class EditBoxMixin {
     private String passwordObfuscationProxy(EditBox editBox) {
         String text = editBox.getValue();
 
-        Screen currentScreen = Minecraft.getInstance().gui.screen();
+        Screen screen = Minecraft.getInstance().gui.screen();
 
-        if (currentScreen instanceof ChatScreen) {
-            return obfuscateChatCommandArgument(text);
-        }
+        if (screen instanceof ChatScreen) {
+            String[] splitText = text.split(" ", -1);
 
-        if (currentScreen instanceof DialogScreen<?> dialogScreen && isSensitiveDialog(dialogScreen)) {
-            return obfuscateEntireValue(text);
-        }
-
-        return text;
-    }
-
-    private boolean isSensitiveDialog(DialogScreen<?> dialogScreen) {
-        String title = dialogScreen.getTitle().getString().toLowerCase(Locale.ROOT);
-
-        for (String keyword : NoPeeking.config.dialogTitleKeywordsToObfuscate) {
-            if (!keyword.isEmpty() && title.contains(keyword.toLowerCase(Locale.ROOT))) {
-                return true;
+            if (splitText.length < 2) {
+                return text;
             }
-        }
 
-        return false;
-    }
-
-    private String obfuscateEntireValue(String text) {
-        if (text.isEmpty()) {
-            return text;
-        }
-
-        char obfuscationChar = NoPeeking.config.obfuscationChar.isEmpty() ? '*' : NoPeeking.config.obfuscationChar.charAt(0);
-        StringBuilder obfuscatedText = new StringBuilder(text.length());
-
-        for (int i = 0; i < text.length(); i++) {
-            obfuscatedText.append(obfuscationChar);
-        }
-
-        return obfuscatedText.toString();
-    }
-
-    private String obfuscateChatCommandArgument(String text) {
-        String[] splitText = text.split(" ", -1);
-
-        if (splitText.length > 1) {
             int firstWordIndex = 0;
 
             try {
@@ -73,28 +38,44 @@ public class EditBoxMixin {
                     firstWordIndex++;
                 }
             } catch (ArrayIndexOutOfBoundsException e) {
-                firstWordIndex = -1;
+                return text;
             }
 
-            if (firstWordIndex != -1 && splitText[firstWordIndex].charAt(0) == '/' && (NoPeeking.config.commandsToObfuscate.contains(splitText[firstWordIndex]) || NoPeeking.config.commandsToObfuscate.contains(splitText[firstWordIndex].substring(1)))) {
-                StringBuilder obfuscatedText = new StringBuilder();
+            if (!(splitText[firstWordIndex].charAt(0) == '/' && (NoPeeking.config.commandsToObfuscate.contains(splitText[firstWordIndex]) || NoPeeking.config.commandsToObfuscate.contains(splitText[firstWordIndex].substring(1))))) {
+                return text;
+            }
 
-                for (int i = 0; i < firstWordIndex; i++) {
-                    obfuscatedText.append(' ');
+            StringBuilder obfuscatedText = new StringBuilder(text.length());
+
+            for (int i = 0; i < firstWordIndex; i++) {
+                obfuscatedText.append(' ');
+            }
+
+            obfuscatedText.append(splitText[firstWordIndex]);
+
+            char obfuscationChar = NoPeeking.config.getObfuscationChar();
+
+            for (String word : Arrays.copyOfRange(splitText, firstWordIndex + 1, splitText.length)) {
+                obfuscatedText.append(' ');
+                for (int i = 0; i < word.length(); i++) {
+                    obfuscatedText.append(obfuscationChar);
                 }
+            }
 
-                obfuscatedText.append(splitText[firstWordIndex]);
+            return obfuscatedText.toString();
+        }
 
-                char obfuscationChar = NoPeeking.config.obfuscationChar.isEmpty() ? '*' : NoPeeking.config.obfuscationChar.charAt(0);
-
-                for (String part : Arrays.copyOfRange(splitText, firstWordIndex + 1, splitText.length)) {
-                    obfuscatedText.append(' ');
-                    for (int i = 0; i < part.length(); i++) {
+        if (screen instanceof DialogScreen<?> dialogScreen) {
+            String title = dialogScreen.getTitle().getString().toLowerCase(Locale.ROOT);
+            for (String keyword : NoPeeking.config.dialogTitleKeywordsToObfuscate) {
+                if (!keyword.isEmpty() && title.contains(keyword.toLowerCase(Locale.ROOT))) {
+                    char obfuscationChar = NoPeeking.config.getObfuscationChar();
+                    StringBuilder obfuscatedText = new StringBuilder(text.length());
+                    for (int i = 0; i < text.length(); i++) {
                         obfuscatedText.append(obfuscationChar);
                     }
+                    return obfuscatedText.toString();
                 }
-
-                return obfuscatedText.toString();
             }
         }
 

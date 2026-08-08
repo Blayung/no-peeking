@@ -5,7 +5,7 @@
 # No Peeking!
 
 ## What is this?
-This is a customizable minecraft fabric mod that hides your password as you type login commands, often used on offline mode servers.
+This is a customizable minecraft fabric mod that hides your password in login commands and dialogs, often used on offline mode servers.
 
 ## Downloads
 You can download this mod on modrinth. [https://modrinth.com/mod/nopeeking](https://modrinth.com/mod/nopeeking)
