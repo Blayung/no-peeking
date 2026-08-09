@@ -1,1 +1,1 @@
-- Added support for dialog menus.
+- Added support for dialog menus ([#10](https://github.com/Blayung/no-peeking/pull/10)), thanks to [loubexos](https://github.com/loubexos)!
