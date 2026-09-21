@@ -51,7 +51,7 @@ modrinth {
     changelog = rootProject.file("modrinth/changelog.md").text
     versionName = "No Peeking " + modVersion
     versionNumber = modVersion
-    gameVersions = ["26.2"]
+    gameVersions = ["26.2", "26.3"]
     loaders = ["fabric"]
     dependencies {
         required.project "cloth-config"
